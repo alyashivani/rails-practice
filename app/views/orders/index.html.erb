@@ -1,0 +1,33 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1> Your orders</h1>
+
+<%= link_to "Back", :back %>
+
+<table>
+  <tr>
+    <th>Order Date</th>
+    <th>Total Order Price</th>
+    <th>See Full order</th>
+    <th>Order Status</th>
+  </tr>
+  <% @orders.each do |order| %>
+	  <tr>
+	    <td><%= order.orderDate %></td>
+	    <td><%= order.orderTotalPrice %></td>
+	    
+	    <td><%= link_to  "see full order", yourOrder_orders_path(order_id: order.id) %></td>
+      <td><%= order.status %></td>
+	  </tr>
+  <% end %>
+</table>
+</body>
+</html>

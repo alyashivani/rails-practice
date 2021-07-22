@@ -1,0 +1,55 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>Users List</h1>
+
+<table>
+  <tr>
+  	<th>S.No.</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>Date of Birth</th>
+    <th>Is admin</th>
+    <th>Approve User</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @users.each do |user| %>
+	  <tr>
+	  	<td><%= user.id %></td>
+	    <td><%= user.name %></td>
+	    <td><%= user.gender %></td>
+	    <td><%= user.email %></td>
+	    <td><%= user.phoneNumber %></td>
+	    <td><%= user.dateBirth %></td>
+	    <td><%= user.admin %></td>
+	    <td>
+	    	<%= user.approve %>
+	    	<%= form_with url: approval_admin_users_path(user_id: user.id) do |form| %>
+			    <%= form.check_box :approve %>
+					<%= form.submit "approve"%>
+  
+			  <% end %>
+			</td>
+	    <td><%= link_to "Edit", edit_admin_user_path(user) %></td>
+	    <td><%= link_to "Delete", admin_user_path(user) , method: :delete, data: { confirm: "Are you sure?" } %></td>
+	  </tr>
+  <% end %>
+</table>
+
+<td><%= link_to "Back", admin_dashboards_path %></td>
+</body>
+</html>
+
+
+
+	

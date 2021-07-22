@@ -1,0 +1,42 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1> Full order </h1> 
+<%= link_to "Back", :back %>
+
+<table>
+  <tr>
+    
+    <th>Product name</th>
+    <th>Quantity</th>
+    <th>Product Unit price</th>
+    
+    <th>Product Image</th>
+  </tr>
+  <% @orderitems.each do |order| %>
+	  <tr>
+      
+  	    <% product = Product.find(order.product_id) %>
+        
+  	    <td><%= product.name %></td>
+        <td><%= order.qty %></td>
+        <td><%= product.price %></td>
+        
+        <td><%= image_tag url_for(product.avatar.variant(resize_to_limit: [300, 300]).processed ) if product.avatar.attached? %> </td>
+      
+	  </tr>
+  <% end %>
+</table>
+</body>
+</html>
+
+
+
+

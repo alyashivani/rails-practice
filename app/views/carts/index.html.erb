@@ -1,0 +1,52 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>Your cart</h1>
+<%= link_to "Back", :back %>
+
+<%= link_to "Place Order", order_placed_orders_path(@cart_items), method: :post %>
+
+<table>
+  <tr>
+  	
+  	<th>Quantity</th>
+    <th>Product name</th>
+    <th>Product price</th>
+    <th>Total price</th>
+    <th>Product Image</th>
+    
+    <th>Delete</th>
+  </tr>
+  <% @cart_items.each do |cartitem| %>
+
+	  <tr>
+	  	
+	  	<td><%= cartitem.qty %>
+
+
+	  		<%= form_with url: update_qty_carts_path(cart_id: cartitem.id) do |form| %>
+					<%= form.number_field :qty, in: 1..20 %>
+					<%= form.submit %>
+				<% end %>
+	  	</td>
+	  <% product = Product.find(cartitem.product_id) %>
+	    <td><%= product.name %></td>
+	    <td><%= product.price %></td>
+	    <td><%= cartitem.total_price%></td>
+	    
+	    <td><%= image_tag url_for(product.avatar.variant(resize_to_limit: [300, 300]).processed ) if product.avatar.attached? %> </td>
+	    
+	    <td><%= link_to "Delete", cart_path(cartitem) , method: :delete, data: { confirm: "Are you sure?" } %></td>
+	  </tr>
+  <% end %>
+</table>
+</body>
+</html>
+

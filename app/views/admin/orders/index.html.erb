@@ -1,0 +1,45 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>Products List</h1>
+
+<table>
+  <tr>
+  	<th>S.No.</th>
+    <th>Order Date</th>
+    <th>Order Total Price</th>
+    <th>User Name</th>
+    <th>Order Status</th>
+    
+  </tr>
+  <% @orders.each do |order| %>
+	  <tr>
+	  	<td><%= order.id %></td>
+	    <td><%= order.orderDate %></td>
+	    <td><%= order.orderTotalPrice %></td>
+	    <td><%= User.find(order.user_id).name %></td>
+	    <td><%= order.status %>
+	    	<%= form_with url: update_status_admin_orders_path(id: order.id) do |form| %>
+					<%= form.select :status, ["Placed", "Shipped", " intransit", "Delivered", "Canceled"] %>
+					<%= form.submit %>
+				<% end %>
+
+	    </td>
+	  </tr>
+  <% end %>
+</table>
+
+<td><%= link_to "Back", admin_dashboards_path %></td>
+</body>
+</html>
+
+
+
+	

@@ -1,0 +1,36 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<br>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Availability</th>
+    <th>Manufacture Date</th>
+    <th>Product Image</th>
+    <th>Add to Cart</th>
+    <th>show</th>
+  </tr>
+  <% @products.each do |product| %>
+	  <tr>
+	    <td><%= product.name %></td>
+	    <td><%= product.price %></td>
+	    <td><%= product.availability %></td>
+	    <td><%= product.manf_date %></td>
+	    <td><%= image_tag url_for(product.avatar.variant(resize_to_limit: [300, 300]).processed ) if product.avatar.attached? %> </td>
+	    <td><%= link_to "Add to Cart", add_to_cart_home_index_path(product_id: product.id), method: :post %></td>
+      <td><%= link_to " show", home_path(product) %></td>
+
+	  </tr>
+  <% end %>
+</table>
+</body>
+</html>
+

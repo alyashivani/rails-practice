@@ -1,0 +1,18 @@
+Welcome to Witmates, <%= @user.name %>
+    
+=======================================================================    
+
+You have successfully completed your order and your order details are...
+Order Number : <%= @order.id%>
+Order Total Amount : <%= @order.orderTotalPrice%>
+Order Status : <%= @order.status %>
+
+<% @order.order_items.each do |item| %>
+    Product Name : <%= Product.find(item.product_id).name %>
+    Product Quantity : <%= item.qty %>
+    Product Unit Price : <%= item.unit_price %>
+<% end %>
+
+    
+    
+Thanks for ordering and have a great day!

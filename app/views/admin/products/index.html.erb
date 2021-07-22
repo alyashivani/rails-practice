@@ -1,0 +1,45 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>Products List</h1>
+
+<table>
+  <tr>
+  	<th>S.No.</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Availability</th>
+    <th>Manufacture Date</th>
+    <th>Product Image</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @products.each do |product| %>
+	  <tr>
+	  	<td><%= product.id %></td>
+	    <td><%= product.name %></td>
+	    <td><%= product.price %></td>
+	    <td><%= product.availability %></td>
+	    <td><%= product.manf_date %></td>
+	    <td><%= image_tag url_for(product.avatar.variant(resize_to_limit: [300, 300]).processed ) if product.avatar.attached? %> </td>
+	    <td><%= link_to "Edit", edit_admin_product_path(product) %></td>
+	    <td><%= link_to "Delete", admin_product_path(product) , method: :delete, data: { confirm: "Are you sure?" } %></td>
+	  </tr>
+  <% end %>
+</table>
+
+<td><%= link_to "Back", admin_dashboards_path %></td>
+<td><%= link_to "Add New Product", new_admin_product_path %></td>
+</body>
+</html>
+
+
+
+	

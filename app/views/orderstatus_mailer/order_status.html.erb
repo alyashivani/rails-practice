@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to Witmates, <%= @user.name %></h1>
+    <p>
+      You have successfully completed your order and your order details are...<br>
+      Order Number : <%= @order.id%><br>
+      Order Total Amount : <%= @order.orderTotalPrice%><br>
+      Order Status : <B> <%= @order.status %></B><br>
+      
+        
+        <% @order.order_items.each do |item| %>
+          Product Name : <%= Product.find(item.product_id).name %><br>
+          Product Quantity : <%= item.qty %><br>
+          Product Unit Price : <%= item.unit_price %><br>
+
+        <% end %>
+    </p>
+    
+    <p>Thanks for ordering and have a great day!</p>
+  </body>
+</html>
