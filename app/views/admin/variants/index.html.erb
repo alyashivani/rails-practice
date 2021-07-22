@@ -1,0 +1,41 @@
+ <html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<h1>Products List</h1>
+
+<table>
+  <tr>
+  	<th>Id</th>
+    <th>Name</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+  <% @variants.each do |variant| %>
+  <tr>
+	
+	<td><%= variant.id %></td>
+    <td><%= variant.name %></td>
+    
+    <td><%= link_to "View variant", admin_variant_path(variant) %> </td>
+     <td>   <%= link_to "Edit variant", edit_admin_variant_path(variant) %></td>
+     
+</tr>
+<% end %>
+</table>
+</body>
+</html>
+
+<td>   <%= link_to "Add new variant", new_admin_variant_path %></td>
+
+
+
+
+
+	

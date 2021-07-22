@@ -1,0 +1,8 @@
+<h1><%= @variant.name %></h1>
+<% if @variant.variant_attributes.any? %>
+    <h2>Variants Attributes:</h2>
+    
+            <% @variant.variant_attributes.each do |attr| %>
+                <%= attr.name %> <br>
+            <% end %>  
+<% end %> 

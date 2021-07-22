@@ -10,9 +10,14 @@ import "channels"
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+
+require('./nested-forms/addFields')
+require('./nested-forms/removeFields')
 
 

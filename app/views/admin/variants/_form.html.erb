@@ -1,0 +1,18 @@
+<%= form_with model: @variant, url: admin_variant_path ,local: true do |f| %>
+    
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    
+    <fieldset>
+        <legend>Variant attributes:</legend>
+        <%= f.fields_for :variant_attributes do |attr_form| %>
+            <%= render "variant_attribute_fields", f: attr_form %> 
+        <% end %>
+        <%= link_to_add_fields "Add variant attribute", f, :variant_attributes %>
+    </fieldset>
+
+    <%= f.submit %>
+    <% if params[:action] === "edit" && params[:controller] === "variant" %>
+        <%= link_to "Delete Person", admin_variant_path(@variant), method: :delete, data: { confirm: "Are You Sure?" } %>
+    <% end %>
+<% end %>

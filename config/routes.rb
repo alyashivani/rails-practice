@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     resources :products
     resources :users
     resources :orders
+    resources :variants
 
+    
     resources :orders do
       collection do
         post :update_status
