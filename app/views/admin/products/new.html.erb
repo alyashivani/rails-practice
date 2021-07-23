@@ -1,37 +1,3 @@
 <h1>Add New Product</h1>
 
-<%= form_with model: @product, url: admin_products_path do |form| %>
-  <div>
-    <%= form.label :name, "Name" %><br>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :price, "Price" %><br>
-    <%= form.text_field :price %>
-  </div>
-
-  <div>
-    <%= form.label :availability, "Availability" %><br>
-    <%= form.radio_button :availability , "Yes"%>
-    <%= form.label :availability, "Yes" %>
-    <%= form.radio_button :availability , "No"%>
-    <%= form.label :availability, "No" %>
-  </div>
-
-
-  <div>
-    <%= form.label :manf_date, "Manufacture Date" %><br>
-    <%= form.date_field :manf_date %>
-  </div>
-
-  <div>
-<%= form.label :avatar, "Upload Product Image" %><br>
-    <%= form.file_field :avatar %></div>
-  <div>
-    <%= form.submit %>
-  </div>
-  <div>
-    <%= link_to "Back", :back %>
-  </div>
-<% end %>
+<%= render "form" %>

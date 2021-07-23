@@ -14,6 +14,7 @@
     <%= f.label :gender, "Male" %><br>
     <%= f.radio_button :gender, "Female" %>
     <%= f.label :gender, "Female" %><br>
+
   </div>
 
   <div class="field">
@@ -23,7 +24,7 @@
 
   <div class="field">
     <%= f.label :dateBirth, "Date of Birth" %><br>
-    <%= f.date_select(start_year: Date.today.year - 40, end_year: Date.today.year, selected: Date.today) :dateBirth %>
+    <%= f.date_select  :dateBirth, start_year: Date.current.year, end_year: 1950, autofocus: true %>
   </div>
   
   <% if current_user.is_admin? %>
@@ -71,3 +72,5 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+
