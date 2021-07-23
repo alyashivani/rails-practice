@@ -24,7 +24,7 @@
 
   <div>
     <%= form.label :dateBirth, "Date of Birth" %><br>
-    <%= form.date_field :dateBirth %>
+    <%= f.date_select  :dateBirth, start_year: Date.current.year, end_year: 1950, autofocus: true %>
   </div>
 
   <div>

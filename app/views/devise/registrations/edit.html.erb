@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :dateBirth, "Date of Birth" %><br>
-    <%= f.date_field :dateBirth %>
+    <%= f.date_select(start_year: Date.today.year - 40, end_year: Date.today.year, selected: Date.today) :dateBirth %>
   </div>
   
   <% if current_user.is_admin? %>

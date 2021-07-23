@@ -1,26 +1,32 @@
 
 <br>
 
+Product Rating : 
 
-Product Rating : <% rating = @product.feedbacks.average(:ratings) %>
+<% if @product.feedbacks.exists? %>
+  <% rating = @product.feedbacks.average(:ratings) %>
 
-<% wholestar = rating.floor %>
-<% halfstar = (wholestar < rating) %>
-<% count = 0 %>
-<% wholestar.times do %>
-  <span class="bi bi-star-fill"></span>
-  <% count += 1 %>
-<% end %>
-<% if halfstar %>
-  <span class="bi bi-star-half"></span>
-  <% count += 1 %>
-<% end %>
-<% if count < 5 %>
-  <% (5-count).times do %>
-    <span class="bi bi-star"></span>
+  <% wholestar = rating.to_i %>
+  <% halfstar = (wholestar < rating) %>
+  <% count = 0 %>
+  <% wholestar.times do %>
+    <span class="bi bi-star-fill"></span>
+    <% count += 1 %>
   <% end %>
+  <% if halfstar %>
+    <span class="bi bi-star-half"></span>
+    <% count += 1 %>
+  <% end %>
+  <% if count < 5 %>
+    <% (5-count).times do %>
+      <span class="bi bi-star"></span>
+    <% end %>
+  <% end %>
+<% else %>
+  <% 5.times do %>
+      <span class="bi bi-star"></span>
+    <% end %>
 <% end %>
-
 
 
 <br>

@@ -24,7 +24,7 @@
 
   <div class="field">
     <%= f.label :dateBirth, "Date Of Birth" %><br />
-    <%= f.date_field :dateBirth, autofocus: true %>
+    <%= f.date_select  :dateBirth, start_year: Date.current.year, end_year: 1950, autofocus: true %>
   </div>
 
   <div class="field">
