@@ -29,6 +29,8 @@ table, th, td {
 	    <td><%= product.availability %></td>
 	    <td><%= product.manf_date %></td>
 	    <td><%= image_tag url_for(product.avatar.variant(resize_to_limit: [300, 300]).processed ) if product.avatar.attached? %> </td>
+
+	    <td><%= link_to "View", admin_product_path(product) %></td>
 	    <td><%= link_to "Edit", edit_admin_product_path(product) %></td>
 	    <td><%= link_to "Delete", admin_product_path(product) , method: :delete, data: { confirm: "Are you sure?" } %></td>
 	  </tr>

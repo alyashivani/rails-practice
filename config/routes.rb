@@ -5,11 +5,16 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :dashboards, only: :index
-    resources :products
+    resources :products do
+      collection do 
+        get :options_for_variant
+      end  
+    end
     resources :users
     resources :orders
     resources :variants
 
+    resources :product_variant
     
     resources :orders do
       collection do

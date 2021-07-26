@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_22_071605) do
+ActiveRecord::Schema.define(version: 2021_07_26_063912) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -88,6 +88,17 @@ ActiveRecord::Schema.define(version: 2021_07_22_071605) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "product_variants", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "variant_id", null: false
+    t.integer "variant_attribute_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_variants_on_product_id"
+    t.index ["variant_attribute_id"], name: "index_product_variants_on_variant_attribute_id"
+    t.index ["variant_id"], name: "index_product_variants_on_variant_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -136,5 +147,8 @@ ActiveRecord::Schema.define(version: 2021_07_22_071605) do
   add_foreign_key "feedbacks", "products"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_variants", "products"
+  add_foreign_key "product_variants", "variant_attributes"
+  add_foreign_key "product_variants", "variants"
   add_foreign_key "variant_attributes", "variants"
 end

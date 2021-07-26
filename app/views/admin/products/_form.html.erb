@@ -24,8 +24,18 @@
   </div>
 
   <div>
-<%= form.label :avatar, "Upload Product Image" %><br>
-    <%= form.file_field :avatar %></div>
+    <%= form.label :avatar, "Upload Product Image" %><br>
+    <%= form.file_field :avatar %>
+  </div>
+
+  <div>
+    <%= form.fields_for :product_variants do |varient_form| %>
+      <%= render "product_variant_fields", f: varient_form %>
+    <% end %>
+    <%= link_to_add_fields "Add variant", form, :product_variants %>
+  </div>
+
+  
   <div>
     <%= form.submit %>
   </div>

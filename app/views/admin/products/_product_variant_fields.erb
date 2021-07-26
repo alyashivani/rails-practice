@@ -1,0 +1,18 @@
+<div class="nested-fields">
+    <%= f.hidden_field :_destroy %>
+    
+    <div>
+        <%= f.label :varient %>
+        <%= f.collection_select :variant_id, Variant.all, :id, :name, {}, {class: 'variant_select'} %>
+    </div>
+    
+    
+    <div>
+        <%= f.label :variant_attribute %>
+        <%= f.collection_select :variant_attribute_id, (f.object.present? && f.object.persisted?) ? f.object.variant.variant_attributes : Variant.first.variant_attributes, :id, :name %>
+    </div>
+
+    <div>
+        <%= link_to "Remove", '#', class: "remove_fields" %>
+    </div>
+</div>

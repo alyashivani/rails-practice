@@ -1,0 +1,19 @@
+
+<br>
+Product Name : <%= @product.name %><br>
+Product Price : <%= @product.price %><br>
+Product Availability : <%= @product.availability %><br>
+Product Manufacture Date : <%= @product.manf_date %><br>
+Product Image : <br>
+<%= image_tag url_for(@product.avatar.variant(resize_to_limit: [300, 300]).processed ) if @product.avatar.attached? %> <br>
+
+<h3>Product Variants</h3>
+<% if ProductVariant.find_by(product_id: @product.id).present? %>
+    <% ProductVariant.where(product_id: @product.id).each do |var|%>
+        <%= Variant.find_by(id: var.variant_id).name %>
+        <%= VariantAttribute.find_by(id: var.variant_attribute_id).name %><br>
+    <% end %>
+<% end %>
+
+
+    

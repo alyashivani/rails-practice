@@ -3,8 +3,10 @@ class Admin::ProductsController < AdminsController
     @products = Product.all
   end
 
+  def show
+    @product = Product.find(params[:id])
+  end
   
-
   def new
     @product = Product.new
   end
@@ -24,6 +26,7 @@ class Admin::ProductsController < AdminsController
   end
 
   def update
+    byebug
     @product = Product.find(params[:id])
 
     if @product.update(product_params)
@@ -39,9 +42,17 @@ class Admin::ProductsController < AdminsController
 
     redirect_to admin_products_path
   end
+
+  def options_for_variant
+    variant = Variant.find_by(id: params[:id])
+    @variant_attributes = variant.variant_attributes
+  end
   
   private
+
   def product_params
-    params.require(:product).permit(:name, :price, :availability, :manf_date, :avatar)
+    params.require(:product).permit(:name, :price, :availability, :manf_date, :avatar, product_variants_attributes: [:variant_id, :variant_attribute_id, :_destroy, :id])
   end
+
+  
 end
