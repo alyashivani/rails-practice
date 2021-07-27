@@ -1,0 +1,13 @@
+<b>Sports</b>
+
+<ul id="sports">
+<%= render @sports %>
+</ul>
+
+<br>
+
+<%= form_with model: @sport,local: false do |form| %>
+  <%= form.label :name %><br>
+  <%= form.text_field :name %>
+  <%= form.submit %>
+<% end %>

@@ -17,6 +17,7 @@
 
     <% if user_signed_in? and not(current_user.is_admin?) and current_user.approve %>
       <%= link_to "Home", dashboard_home_index_path %>
+      <%= link_to "Sports", sports_path %>
       <%= link_to "Your Cart", carts_path %>
 	    <%= link_to "Your Orders", orders_path %>
 	    <%= link_to "Edit Profile", edit_user_registration_path %>

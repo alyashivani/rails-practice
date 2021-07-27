@@ -1,4 +1,12 @@
-<%= form_with model: [:admin, @product] do |form| %>
+<%= form_with model: [:admin, @product], local: false do |form| %>
+
+<% if flash[:messages] %>
+  
+    <h6 style= "color: red"><%= flash[:messages] %></h6> <br>
+    <% flash[:messages] = nil %>
+
+<% end %>
+
   <div>
     <%= form.label :name, "Name" %><br>
     <%= form.text_field :name %>

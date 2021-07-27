@@ -33,7 +33,7 @@ class FeedbacksController < ApplicationController
 		    	redirect_to :new
 		    end
 		  else
-		  	redirect_to home_path(@product), notice: "You can not give feedback because you didn't order something"
+		  	redirect_to home_path(@product), notice: "You can not give feedback because you didn't order this product"
 		  end
 		end
   end

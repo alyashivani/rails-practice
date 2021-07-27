@@ -13,8 +13,6 @@ Rails.application.routes.draw do
     resources :users
     resources :orders
     resources :variants
-
-    resources :product_variant
     
     resources :orders do
       collection do
@@ -59,9 +57,7 @@ Rails.application.routes.draw do
     resources :feedbacks
   end
 
-  # resources :products do
-  #   resources :feedbacks
-  # end
+  resources :sports
   
 
 end
