@@ -26,7 +26,7 @@ class Admin::ProductsController < AdminsController
         
         if @product.save
           format.html { redirect_to admin_products_path, notice: 'Product was successfully created.' }
-          byebug
+          
         end
       else
         format.html { render action: "new", notice: "Same attribute is selected multiple times." }

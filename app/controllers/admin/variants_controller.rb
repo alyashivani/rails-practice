@@ -10,7 +10,8 @@ class Admin::VariantsController < AdminsController
     end
 
     def create
-        @variant = Variant.create(variant_params)
+        @variant = Variant.new(variant_params)
+        
         if @variant.save
             redirect_to admin_variants_path
         else

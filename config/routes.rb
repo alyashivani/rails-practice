@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users, controllers: {sessions: "user/sessions"}
   
   root to: "home#index"
@@ -57,7 +59,10 @@ Rails.application.routes.draw do
     resources :feedbacks
   end
 
-  resources :sports
+  resources :sports do
+    resources :tickets
+  end
+
   
 
 end

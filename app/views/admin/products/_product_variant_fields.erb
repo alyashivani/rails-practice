@@ -9,7 +9,7 @@
     
     <div>
         <%= f.label :variant_attribute %><br>
-        <%= f.collection_select :variant_attribute_id, (f.object.present? && f.object.persisted?) ? f.object.variant.variant_attributes : Variant.first.variant_attributes, :id, :name, {class: 'variant_attribute_select'} %>
+        <%= f.collection_select :variant_attribute_id, (f.object.present? && f.object.persisted?) ? f.object.variant.variant_attributes : Variant.first.variant_attributes, :id, :name %>
     </div>
 
     <div>

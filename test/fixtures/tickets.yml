@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  price: 1.5
+  booked_at: 2021-07-28
+  sport: one
+
+two:
+  category: MyString
+  price: 1.5
+  booked_at: 2021-07-28
+  sport: two

@@ -64,3 +64,6 @@ gem "letter_opener", group: :development
 
 gem "bootstrap_form", "~> 4.0"
 gem 'jquery-rails'
+
+gem 'activeadmin'
+
