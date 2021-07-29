@@ -27,7 +27,7 @@ table, th, td {
 	    <td><%= User.find(order.user_id).name %></td>
 	    <td><%= order.status %>
 	    	<%= form_with url: update_status_admin_orders_path(id: order.id) do |form| %>
-					<%= form.select :status, ["Placed", "Shipped", " intransit", "Delivered", "Canceled"] %>
+					<%= form.select :status, ["Placed", "Shipped", " intransit", "Delivered", "Canceled"], {:selected => order.status} %>
 					<%= form.submit %>
 				<% end %>
 

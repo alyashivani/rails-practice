@@ -12,10 +12,15 @@ class User::SessionsController < Devise::SessionsController
   def create
     user = User.find_by(email: params[:user][:email])
     
-    if user.approve
-      super
+    if user
+      if user.approve
+        super
+      else
+        redirect_to root_path
+      end
     else
-      redirect_to root_path
+      flash[:alert] = "you are not registered with us."
+      redirect_to new_user_registration_path
     end
   end
 
