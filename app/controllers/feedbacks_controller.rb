@@ -4,13 +4,6 @@ class FeedbacksController < ApplicationController
 		@feedbacks = Feedback.all.where(product_id: params[:product_id])
 	end
 
-	# def feedback_save
-	# 	@feedback = Feedback.new(product_id: @product_id, message: @message, username: current_user.name)
-	# 	if @feedback.save
-	# 		redirect_to feedbacks_path
-	# 	end
-	# end
-
 	def new
     @feedback = Feedback.new
   end

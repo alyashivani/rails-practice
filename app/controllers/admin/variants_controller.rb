@@ -11,7 +11,7 @@ class Admin::VariantsController < AdminsController
 
     def create
         @variant = Variant.new(variant_params)
-        
+        byebug
         if @variant.save
             redirect_to admin_variants_path
         else
