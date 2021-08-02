@@ -12,13 +12,16 @@ Rails.application.routes.draw do
           resources :order_items
         end
       end
+
       resources :products do
         resources :product_variants
         resources :feedbacks
       end
+
       resources :sports do 
         resources :tickets
       end
+      
       resources :variants
 
     end 
